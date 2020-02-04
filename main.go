@@ -83,6 +83,6 @@ func main() {
 
 		label := labels[i]
 
-		fmt.Printf("%d %s: %s\n", nameID, label, value)
+		fmt.Printf("%d, %s, %s\n", nameID, label, value)
 	}
 }
