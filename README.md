@@ -12,7 +12,7 @@ go get github.com/wayneashleyberry/sfnt
 sfnt PaperCuteBold.otf | prettyjson
 ```
 
-```sh
+```json
 {
   "sfnt.NameIDCopyright": "Copyright (c) 2012 by Fanny Coulez, Julien Saurin. All rights reserved.",
   "sfnt.NameIDDescription": "Copyright (c) 2012 by Fanny Coulez, Julien Saurin. All rights reserved.",
