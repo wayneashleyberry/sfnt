@@ -93,17 +93,18 @@ func run(filename string) error {
 		"sfnt.NameIDVariationsPostScriptPrefix",
 	}
 
-	out := map[string]string{}
+	out := map[string]*string{}
 
 	for i, nameID := range nameIDs {
+		label := labels[i]
+
 		value, err := f.Name(nil, nameID)
 		if err != nil {
+			out[label] = nil
 			continue
 		}
 
-		label := labels[i]
-
-		out[label] = value
+		out[label] = &value
 	}
 
 	b, err := json.Marshal(out)
