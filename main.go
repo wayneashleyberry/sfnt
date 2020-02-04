@@ -19,40 +19,70 @@ func main() {
 		panic(err)
 	}
 
-	names := []sfnt.NameID{
-		0,
-		1,
-		2,
-		3,
-		4,
-		5,
-		6,
-		7,
-		8,
-		9,
-		10,
-		11,
-		12,
-		13,
-		14,
-		16,
-		17,
-		18,
-		19,
-		20,
-		21,
-		22,
-		23,
-		24,
-		25,
+	nameIDs := []sfnt.NameID{
+		sfnt.NameIDCopyright,
+		sfnt.NameIDFamily,
+		sfnt.NameIDSubfamily,
+		sfnt.NameIDUniqueIdentifier,
+		sfnt.NameIDFull,
+		sfnt.NameIDVersion,
+		sfnt.NameIDPostScript,
+		sfnt.NameIDTrademark,
+		sfnt.NameIDManufacturer,
+		sfnt.NameIDDesigner,
+		sfnt.NameIDDescription,
+		sfnt.NameIDVendorURL,
+		sfnt.NameIDDesignerURL,
+		sfnt.NameIDLicense,
+		sfnt.NameIDLicenseURL,
+		sfnt.NameIDTypographicFamily,
+		sfnt.NameIDTypographicSubfamily,
+		sfnt.NameIDCompatibleFull,
+		sfnt.NameIDSampleText,
+		sfnt.NameIDPostScriptCID,
+		sfnt.NameIDWWSFamily,
+		sfnt.NameIDWWSSubfamily,
+		sfnt.NameIDLightBackgroundPalette,
+		sfnt.NameIDDarkBackgroundPalette,
+		sfnt.NameIDVariationsPostScriptPrefix,
 	}
 
-	for _, id := range names {
-		value, err := f.Name(nil, id)
+	labels := []string{
+		"sfnt.NameIDCopyright",
+		"sfnt.NameIDFamily",
+		"sfnt.NameIDSubfamily",
+		"sfnt.NameIDUniqueIdentifier",
+		"sfnt.NameIDFull",
+		"sfnt.NameIDVersion",
+		"sfnt.NameIDPostScript",
+		"sfnt.NameIDTrademark",
+		"sfnt.NameIDManufacturer",
+		"sfnt.NameIDDesigner",
+		"sfnt.NameIDDescription",
+		"sfnt.NameIDVendorURL",
+		"sfnt.NameIDDesignerURL",
+		"sfnt.NameIDLicense",
+		"sfnt.NameIDLicenseURL",
+		"sfnt.NameIDTypographicFamily",
+		"sfnt.NameIDTypographicSubfamily",
+		"sfnt.NameIDCompatibleFull",
+		"sfnt.NameIDSampleText",
+		"sfnt.NameIDPostScriptCID",
+		"sfnt.NameIDWWSFamily",
+		"sfnt.NameIDWWSSubfamily",
+		"sfnt.NameIDLightBackgroundPalette",
+		"sfnt.NameIDDarkBackgroundPalette",
+		"sfnt.NameIDVariationsPostScriptPrefix",
+	}
+
+	for i, nameID := range nameIDs {
+		value, err := f.Name(nil, nameID)
 		if err != nil {
 			continue
 		}
 
-		fmt.Printf("%d: %s\n", id, value)
+		label := labels[i]
+
+		fmt.Printf("%s (%d): %s\n", label, nameID, value)
 	}
 }
