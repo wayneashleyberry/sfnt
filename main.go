@@ -5,18 +5,35 @@ import (
 	"io/ioutil"
 	"os"
 
+	"github.com/spf13/cobra"
 	"golang.org/x/image/font/sfnt"
 )
 
 func main() {
+	cmd := &cobra.Command{
+		Use:   "sfnt [filename]",
+		Short: "Display truetype font metadata",
+		Args:  cobra.ExactArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			return run(args[0])
+		},
+	}
+
+	if err := cmd.Execute(); err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+}
+
+func run(filename string) error {
 	src, err := ioutil.ReadFile(os.Args[1])
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	f, err := sfnt.Parse(src)
 	if err != nil {
-		panic(err)
+		return err
 	}
 
 	nameIDs := []sfnt.NameID{
@@ -85,4 +102,6 @@ func main() {
 
 		fmt.Printf("%d, %s, %s\n", nameID, label, value)
 	}
+
+	return nil
 }
