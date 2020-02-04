@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -92,6 +93,8 @@ func run(filename string) error {
 		"sfnt.NameIDVariationsPostScriptPrefix",
 	}
 
+	out := map[string]string{}
+
 	for i, nameID := range nameIDs {
 		value, err := f.Name(nil, nameID)
 		if err != nil {
@@ -100,8 +103,15 @@ func run(filename string) error {
 
 		label := labels[i]
 
-		fmt.Printf("%d, %s, %s\n", nameID, label, value)
+		out[label] = value
 	}
+
+	b, err := json.Marshal(out)
+	if err != nil {
+		return err
+	}
+
+	fmt.Println(string(b))
 
 	return nil
 }
