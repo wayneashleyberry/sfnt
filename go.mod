@@ -1,9 +1,8 @@
 module github.com/wayneashleyberry/sfnt
 
-go 1.13
+go 1.15
 
 require (
-	github.com/davecgh/go-spew v1.1.1
-	github.com/spf13/cobra v0.0.5
-	golang.org/x/image v0.0.0-20200119044424-58c23975cae1
+	github.com/spf13/cobra v1.1.0
+	golang.org/x/image v0.0.0-20200927104501-e162460cd6b5
 )
