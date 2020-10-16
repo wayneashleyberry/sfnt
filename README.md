@@ -1,3 +1,4 @@
+![Go](https://github.com/wayneashleyberry/sfnt/workflows/Go/badge.svg)
 [![Go Report Card](https://goreportcard.com/badge/github.com/wayneashleyberry/sfnt)](https://goreportcard.com/report/github.com/wayneashleyberry/sfnt)
 
 ### Installation
