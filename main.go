@@ -29,12 +29,12 @@ func main() {
 func run(filename string) error {
 	src, err := ioutil.ReadFile(os.Args[1])
 	if err != nil {
-		return err
+		return fmt.Errorf("read file: %s: %w", os.Args[1], err)
 	}
 
 	f, err := sfnt.Parse(src)
 	if err != nil {
-		return err
+		return fmt.Errorf("parse sfnt font: %w", err)
 	}
 
 	nameIDs := []sfnt.NameID{
@@ -109,7 +109,7 @@ func run(filename string) error {
 
 	b, err := json.Marshal(out)
 	if err != nil {
-		return err
+		return fmt.Errorf("marshal json: %w", err)
 	}
 
 	fmt.Println(string(b))
